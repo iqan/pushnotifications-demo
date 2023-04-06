@@ -1,0 +1,12 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "gcmEndpoint": {
+        "value": "https://fcm.googleapis.com/fcm/send"
+      },
+      "googleApiKey": {
+        "value": "<ADD YOUR OWN API KEY HERE>"
+      }
+    }
+}
