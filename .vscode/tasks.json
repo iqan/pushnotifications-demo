@@ -71,7 +71,7 @@
 			"type": "func",
 			"dependsOn": "build (functions)",
 			"options": {
-				"cwd": "${workspaceFolder}/AzureFunction\\PromoNotificationFunc/bin/Debug/netcoreapp3.1"
+				"cwd": "${workspaceFolder}/AzureFunction\\PromoNotificationFunc/bin/Debug/net6"
 			},
 			"command": "host start",
 			"isBackground": true,

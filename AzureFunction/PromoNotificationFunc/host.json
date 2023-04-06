@@ -9,10 +9,11 @@
     },
     "extensions": {
         "cosmosDB": {
-            "connectionMode": "Gateway",
+            "connectionMode": "Direct",
             "leaseOptions": {
                 "leasePrefix": "promo"
-            }
+            },
+            "protocol": "Https"
         }
     }
 }
