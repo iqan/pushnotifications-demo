@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
               },
               onMessage: (Map<String, dynamic> notification) async {
                 print('anh onMessage: $notification');
-                Scaffold.of(context).showSnackBar(SnackBar(
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                   content: Text(notification['message']),
                 ));
               },

@@ -44,7 +44,7 @@
 
         <meta-data 
             android:name="NotificationHubName"
-            android:value="REMOVED CONTENT - NOTIFICATION HUB NAME" />
+            android:value="iqans-demos-notificationhub" />
         <meta-data 
             android:name="NotificationHubConnectionString"
             android:value="REMOVED CONTENT - NOTIFICATION HUB CONNECTION STRING HERE" />

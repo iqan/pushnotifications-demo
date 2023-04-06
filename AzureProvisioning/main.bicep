@@ -1,6 +1,6 @@
 targetScope = 'subscription'
 
-param gcmEndpoint string
+param gcmEndpoint string = 'https://fcm.googleapis.com/fcm/send'
 @secure()
 param googleApiKey string
 param resourcePrefix string = 'iqans-demos'

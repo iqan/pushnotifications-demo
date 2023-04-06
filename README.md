@@ -9,7 +9,7 @@ Provisions azure infrastructure using Bicep.
 To deploy
 
 ```shell
-az deployment group create --resource-group <resource-group-name> --template-file main.bicep --parameter-file parameters.json
+az deployment create --location NorthEurope --template-file main.bicep --parameters googleApiKey=__ADD YOUR OWN API KEY HERE__
 ```
 
 ## Azure Function
