@@ -1,6 +1,6 @@
 param resourcePrefix string
-param resourcePrefixShort string
-
+param stgConnectionString string
+param cosmosConnectionString string
 param location string = resourceGroup().location
 
 resource plan 'Microsoft.Web/serverfarms@2022-03-01' = {
@@ -15,23 +15,6 @@ resource plan 'Microsoft.Web/serverfarms@2022-03-01' = {
     reserved: true
   }
 }
-
-resource stg 'Microsoft.Storage/storageAccounts@2021-08-01' = {
-  name: '${resourcePrefixShort}sa'
-  location: location
-  tags: resourceGroup().tags
-  sku: {
-    name: 'Standard_LRS'
-  }
-  kind: 'StorageV2'
-  properties: {
-    supportsHttpsTrafficOnly: true
-    minimumTlsVersion:'TLS1_2'
-    accessTier: 'Hot'
-  }
-}
-
-var stgConnectionString = 'DefaultEndpointsProtocol=https;AccountName=${stg.name};EndpointSuffix=${environment().suffixes.storage};AccountKey=${listKeys(stg.id, stg.apiVersion).keys[0].value}'
 
 resource func 'Microsoft.Web/sites@2021-03-01' = {
   name: '${resourcePrefix}-func'
@@ -54,6 +37,10 @@ resource func 'Microsoft.Web/sites@2021-03-01' = {
         {
           name: 'FUNCTIONS_WORKER_RUNTIME'
           value: 'dotnet'
+        }
+        {
+          name: 'CosmosDBConnectionString'
+          value: cosmosConnectionString
         }
       ]
       minTlsVersion: '1.2'

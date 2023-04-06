@@ -23,12 +23,31 @@ module nh 'notification-hub.bicep' = {
   }
 }
 
+module stg 'storage.bicep' = {
+  scope: rg
+  name: 'storage'
+  params: {
+    resourcePrefixShort: resourcePrefixShort
+    location: rg.location
+  }
+}
+
+module cdb 'cosmos.bicep' = {
+  scope: rg
+  name: 'cosmos-db'
+  params: {
+    resourcePrefix: resourcePrefix
+    location: rg.location
+  }
+}
+
 module func 'function.bicep' = {
   scope: rg
   name: 'function-app'
   params: {
     resourcePrefix: resourcePrefix
-    resourcePrefixShort: resourcePrefixShort
     location: rg.location
+    cosmosConnectionString: cdb.outputs.connectionString
+    stgConnectionString: stg.outputs.connectionString
   }
 }
