@@ -1,6 +1,5 @@
 param resourcePrefix string
 param stgConnectionString string
-param cosmosConnectionString string
 param location string = resourceGroup().location
 
 resource plan 'Microsoft.Web/serverfarms@2022-03-01' = {
@@ -39,8 +38,8 @@ resource func 'Microsoft.Web/sites@2021-03-01' = {
           value: 'dotnet'
         }
         {
-          name: 'CosmosDBConnectionString'
-          value: cosmosConnectionString
+          name: 'CosmosDBConnection__accountEndpoint'
+          value: 'https://${resourcePrefix}-cosmos.documents.azure.com:443/'
         }
       ]
       minTlsVersion: '1.2'
@@ -50,5 +49,25 @@ resource func 'Microsoft.Web/sites@2021-03-01' = {
   }
   identity: {
     type: 'SystemAssigned'
+  }
+}
+
+resource cosmos 'Microsoft.DocumentDB/databaseAccounts@2022-05-15' existing = {
+  name: '${resourcePrefix}-cosmos'
+}
+
+resource roleDef 'Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions@2023-03-01-preview' existing = {
+  parent: cosmos
+  name: '5bd9cd88-fe45-4216-938b-f97437e15450' // DocumentDB Account Contributor
+}
+
+
+resource funcRole 'Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments@2022-08-15' = {
+  name: guid('function-cosmos-role')
+  parent: cosmos
+  properties: {
+    principalId: func.identity.principalId
+    roleDefinitionId: roleDef.id
+    scope: cosmos.id
   }
 }

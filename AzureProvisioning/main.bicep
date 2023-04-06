@@ -44,10 +44,12 @@ module cdb 'cosmos.bicep' = {
 module func 'function.bicep' = {
   scope: rg
   name: 'function-app'
+  dependsOn: [
+    cdb
+  ]
   params: {
     resourcePrefix: resourcePrefix
     location: rg.location
-    cosmosConnectionString: cdb.outputs.connectionString
     stgConnectionString: stg.outputs.connectionString
   }
 }
