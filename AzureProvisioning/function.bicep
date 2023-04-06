@@ -9,7 +9,7 @@ resource plan 'Microsoft.Web/serverfarms@2022-03-01' = {
   tags: resourceGroup().tags
   kind: 'linux'
   sku: {
-    name: 'F1'
+    name: 'B1'
   }
   properties: {
     reserved: true
