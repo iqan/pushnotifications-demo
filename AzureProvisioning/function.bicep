@@ -16,7 +16,7 @@ resource plan 'Microsoft.Web/serverfarms@2022-03-01' = {
 }
 
 resource func 'Microsoft.Web/sites@2021-03-01' = {
-  name: '${resourcePrefix}-func'
+  name: '${resourcePrefix}-fnc'
   location: location
   kind: 'functionapp'
   tags: resourceGroup().tags
@@ -58,7 +58,7 @@ resource cosmos 'Microsoft.DocumentDB/databaseAccounts@2022-05-15' existing = {
 
 resource roleDef 'Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions@2023-03-01-preview' existing = {
   parent: cosmos
-  name: '5bd9cd88-fe45-4216-938b-f97437e15450' // DocumentDB Account Contributor
+  name: '00000000-0000-0000-0000-000000000002' // DocumentDB Account Contributor
 }
 
 

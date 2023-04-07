@@ -2,7 +2,7 @@ param resourcePrefixShort string
 param location string = resourceGroup().location
 
 resource stg 'Microsoft.Storage/storageAccounts@2021-08-01' = {
-  name: '${resourcePrefixShort}sa'
+  name: '${resourcePrefixShort}stg'
   location: location
   tags: resourceGroup().tags
   sku: {

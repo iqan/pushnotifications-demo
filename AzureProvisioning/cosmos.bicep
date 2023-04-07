@@ -41,23 +41,23 @@ resource container 'Microsoft.DocumentDB/databaseAccounts/sqlDatabases/container
   }
 }
 
-resource sqlRoleDefinition 'Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions@2021-04-15' = {
-  parent: account
-  name: guid('${account}-cosmos-contributor-role')
-  properties: {
-    roleName: 'Cosmos DB Built-in Data Contributor'
-    type: 'BuiltInRole'
-    assignableScopes: [
-      account.id
-    ]
-    permissions: [
-      {
-        dataActions: [
-          'Microsoft.DocumentDB/databaseAccounts/readMetadata'
-          'Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*'
-          'Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*'
-        ]
-      }
-    ]
-  }
-}
+// resource sqlRoleDefinition 'Microsoft.DocumentDB/databaseAccounts/sqlRoleDefinitions@2021-04-15' = {
+//   parent: account
+//   name: guid('cosmos-contributor-role')
+//   properties: {
+//     roleName: 'Cosmos DB Built-in Data Contributor'
+//     type: 'BuiltInRole'
+//     assignableScopes: [
+//       account.id
+//     ]
+//     permissions: [
+//       {
+//         dataActions: [
+//           'Microsoft.DocumentDB/databaseAccounts/readMetadata'
+//           'Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*'
+//           'Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*'
+//         ]
+//       }
+//     ]
+//   }
+// }
