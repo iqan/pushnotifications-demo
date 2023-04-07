@@ -1,16 +1,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.iqans.iqanspushnotificationdemo">
     <application
-        android:name="io.flutter.app.FlutterApplication"
+        android:name="${applicationName}"
         android:label="iqanspushnotificationdemo"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:exported="false">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
-            android:windowSoftInputMode="adjustResize">
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false">
             <meta-data
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
@@ -28,7 +30,7 @@
             android:name="flutterEmbedding"
             android:value="2" />
 
-        <activity android:name=".Application">
+        <activity android:name=".Application" android:exported="false">
             <intent-filter>
                 <action android:name="FLUTTER_NOTIFICATION_CLICK" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -42,12 +44,16 @@
             </intent-filter>
         </activity>
 
+        <service android:name="io.flutter.plugins.firebasemessaging.FlutterFirebaseMessagingService"
+            android:exported="false">
+        </service>
+
         <meta-data 
             android:name="NotificationHubName"
             android:value="iqans-demos-notificationhub" />
         <meta-data 
             android:name="NotificationHubConnectionString"
-            android:value="REMOVED CONTENT - NOTIFICATION HUB CONNECTION STRING HERE" />
+            android:value="Endpoint=sb://iqans-demos-notificationhub-ns.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=it3p+G4rrAYdcbo/3b7QzWuRe3GHNk4MH9H/nR25Db4=" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />

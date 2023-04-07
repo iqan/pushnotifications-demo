@@ -2,10 +2,19 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Flutter",
+      "type": "dart",
+      "request": "launch",
+      "program": "lib/main.dart",
+      "args": [
+        "--no-sound-null-safety"
+      ]
+    },
+    {
       "name": "Attach to .NET Functions",
       "type": "coreclr",
       "request": "attach",
       "processId": "${command:azureFunctions.pickProcess}"
-    }
+    },
   ]
 }
