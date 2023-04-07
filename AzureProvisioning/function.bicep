@@ -1,5 +1,6 @@
 param resourcePrefix string
 param stgConnectionString string
+param aiKey string
 param location string = resourceGroup().location
 
 resource plan 'Microsoft.Web/serverfarms@2022-03-01' = {
@@ -25,6 +26,10 @@ resource func 'Microsoft.Web/sites@2021-03-01' = {
     siteConfig: {
       acrUseManagedIdentityCreds: true
       appSettings: [
+        {
+          name: 'APPINSIGHTS_INSTRUMENTATIONKEY'
+          value: aiKey
+        }
         {
           name: 'AzureWebJobsStorage'
           value: stgConnectionString

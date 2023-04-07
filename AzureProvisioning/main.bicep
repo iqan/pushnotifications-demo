@@ -41,6 +41,15 @@ module cdb 'cosmos.bicep' = {
   }
 }
 
+module ai 'app-insights.bicep' = {
+  scope: rg
+  name: 'app-insights'
+  params: {
+    resourcePrefix: resourcePrefix
+    location: rg.location
+  }
+}
+
 module func 'function.bicep' = {
   scope: rg
   name: 'function-app'
@@ -51,5 +60,6 @@ module func 'function.bicep' = {
     resourcePrefix: resourcePrefix
     location: rg.location
     stgConnectionString: stg.outputs.connectionString
+    aiKey: ai.outputs.instrumentationKey
   }
 }
