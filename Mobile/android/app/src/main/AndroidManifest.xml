@@ -53,7 +53,7 @@
             android:value="iqans-demos-notificationhub" />
         <meta-data 
             android:name="NotificationHubConnectionString"
-            android:value="Endpoint=sb://iqans-demos-notificationhub-ns.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=it3p+G4rrAYdcbo/3b7QzWuRe3GHNk4MH9H/nR25Db4=" />
+            android:value="<REMOVED CONTENT - PUT YOUR CONNECTION STRING HERE>" />
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
